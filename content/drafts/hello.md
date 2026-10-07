@@ -2,6 +2,7 @@
 title: "A sample essay"
 date: "2026-08-20"
 summary: "Delete this file once you've written something real — it's here to show you the frontmatter format."
+draft: true
 ---
 
 This file lives at `content/writing/hello.md`. Every `.md` file in that folder

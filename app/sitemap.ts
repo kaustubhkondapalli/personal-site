@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { siteUrl } from "@/content/site";
 import { getPosts } from "@/lib/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = `https://${site.domain}`;
+  const base = siteUrl;
   const posts = await getPosts();
 
   return [

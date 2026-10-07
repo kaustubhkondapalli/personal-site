@@ -4,7 +4,7 @@
    Light is the default. Dark follows the OS setting.
    Change these four values to reskin the whole site.        */
 :root {
-  --background: #fdfdfc;
+  --background: #f9f9f6;
   --foreground: #1a1a18;
   --muted: #78766f;
   --rule: #e4e2dc;

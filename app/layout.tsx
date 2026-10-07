@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import Link from "next/link";
-import { site } from "@/content/site";
+import { site, siteUrl, siteTitle } from "@/content/site";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -17,16 +17,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${site.domain}`),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: siteTitle,
     template: `%s — ${site.name}`,
   },
   description: site.description,
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
+    title: siteTitle,
     description: site.description,
-    url: `https://${site.domain}`,
+    url: siteUrl,
     siteName: site.name,
     type: "website",
   },
@@ -45,16 +45,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
           <footer className="mt-20 flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.9375rem] text-muted">
             <Link href="/">{site.name}</Link>
-            {site.links.map((l, i) => (
-              <a
-                key={i}
-                href={l.href}
-                target={l.href.startsWith("mailto:") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-              >
-                {l.label}
-              </a>
-            ))}
+            {site.links?.map((l, i) =>
+              l.href ? (
+                <a
+                  key={i}
+                  href={l.href}
+                  target={l.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <a key={i} aria-disabled="true">
+                  {l.label}
+                </a>
+              ),
+            )}
           </footer>
         </div>
       </body>

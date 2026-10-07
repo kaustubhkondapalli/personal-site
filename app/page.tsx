@@ -9,24 +9,29 @@ export default async function Home() {
 
   return (
     <>
+      {/* Name header hidden for the temp blank placeholder — name still
+          shows in the footer. Restore when there's real content:
       <header>
         <h1 className="text-[1.75rem] leading-tight tracking-[-0.01em]">
           {site.name}
         </h1>
-        <p className="mt-1 font-sans text-[0.9375rem] text-muted">
-          {site.tagline}
-        </p>
+        {site.tagline?.trim() && (
+          <p className="mt-1 font-sans text-[0.9375rem] text-muted">
+            {site.tagline}
+          </p>
+        )}
       </header>
+      */}
 
       <div className="mt-8 space-y-4">
-        {site.bio.map((para, i) => (
+        {site.bio?.map((para, i) => (
           <p key={i}>
             <Inline text={para} />
           </p>
         ))}
       </div>
 
-      {site.now.items.length > 0 && (
+      {site.now && site.now.items.length > 0 && (
         <Section heading={`now — ${site.now.updated}`}>
           <ul className="space-y-1.5">
             {site.now.items.map((item, i) => (
@@ -43,7 +48,7 @@ export default async function Home() {
         </Section>
       )}
 
-      {site.projects.length > 0 && (
+      {site.projects && site.projects.length > 0 && (
         <Section heading="projects">
           <ul className="space-y-3.5">
             {site.projects.map((p, i) => (
@@ -87,7 +92,7 @@ export default async function Home() {
         </Section>
       )}
 
-      {site.recommendations.items.length > 0 && (
+      {site.recommendations && site.recommendations.items.length > 0 && (
         <Section heading={site.recommendations.heading}>
           <ul className="space-y-2">
             {site.recommendations.items.map((r, i) => (

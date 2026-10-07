@@ -52,7 +52,9 @@ follows the visitor's OS setting.
 Type is Newsreader (serif, body) and Inter (sans, labels and metadata), both
 self-hosted at build time via `next/font` — no runtime requests to Google.
 
-The favicon is generated from the first letter of `site.name` in `app/icon.tsx`.
+There is no favicon — browsers will show their default blank-page icon in the
+tab. To add one, drop a `favicon.ico` (or `icon.png`/`icon.svg`) into `app/`
+and Next will pick it up automatically.
 
 ## Deploying
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { site } from "@/content/site";
+import { site, siteUrl } from "@/content/site";
 import { getPost, getPosts } from "@/lib/posts";
 
 export async function generateStaticParams() {
@@ -24,7 +24,7 @@ export async function generateMetadata({
       description: post.summary ?? site.description,
       type: "article",
       publishedTime: post.iso || undefined,
-      url: `https://${site.domain}/writing/${post.slug}`,
+      url: `${siteUrl}/writing/${post.slug}`,
     },
   };
 }
